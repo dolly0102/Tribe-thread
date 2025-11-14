@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TribeThreads — Africa Inspired Fashion</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo">TT</div>
+        <div>
+          <div style="font-weight:700">TribeThreads</div>
+          <div style="font-size:0.82rem;color:var(--muted)">Africa-inspired fashion • Men • Women • Kids</div>
+        </div>
+      </div>
+
+        <nav>
+  <div class="menu-icon" id="menu-icon">
+    ☰
+  </div>
+  <ul id="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="features.html">Collections</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero" id="home">
+      <div class="hero-inner">
+        <div class="hero-left">
+          <span class="eyebrow">New Collection • 2025</span>
+          <h1>Wear the story of Africa — bold patterns, crafted for family.</h1>
+          <p class="lead">
+            TribeThreads celebrates African artistry with modern cuts for men, women, and kids. 
+            Each piece is inspired by traditional motifs reimagined for everyday style.
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="features.html">Explore Collections</a>
+            <a class="btn btn-outline" href="contact.html">Contact Us</a>
+          </div>
+        </div>
+
+        <div class="hero-art" aria-hidden="true">
+          <img src="family.jpg" alt="African-inspired fashion" />
+        </div>
+      </div>
+    </section>
+    <section class="stories container" id="stories">
+  <h2>Photo Stories</h2>
+  <p>Each story celebrates love, growth, and moments that make life beautiful. Tap a photo to explore more in our Services section.</p>
+
+  <div class="story-grid">
+    <a href="features.html" class="story-card">
+      <img src="kid 1.jpg" alt="Happy Kid">
+      <div class="story-info">
+        <h4>Joy of Childhood</h4> 
+        <button class="buy"> Buy now </button>
+        <p>Bright smiles, playful hearts — where every moment is a new adventure.</p>
+      </div>
+    </a>
+
+    <a href="features.html" class="story-card">
+      <img src="female 9.jpg" alt="Elegant Woman">
+      <div class="story-info">
+        <h4>Grace of a Woman</h4>
+        <button class="buy"> Buy now </button>
+        <p>Confidence and beauty in every stride, inspiring the world with her strength.</p>
+      </div>
+    </a>
+
+    <a href="features.html" class="story-card">
+      <img src="male 1.jpg" alt="Stylish Man">
+      <div class="story-info">
+        <h4>Strength of a Man</h4>
+        <button class="buy"> Buy now </button>
+        <p>Determined and focused, he shapes his world with passion and courage.</p>
+      </div>
+    </a>
+
+    <a href="features.html" class="story-card">
+      <img src="couple 1.jpg" alt="Happy Couple">
+      <div class="story-info">
+        <h4>Bond of Love</h4>
+        <button class="buy"> Buy now </button>
+        <p>Together through every season — their laughter paints stories of forever.</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <strong>TribeThreads</strong>
+        <div style="margin-top:8px">© <span id="yr"></span> TribeThreads • Made with ❤ in Africa</div>
+      </div>
+
+      <div style="text-align:right">
+        <a href="contact.html">Contact</a> • <a href="features.html">Collections</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+  const menuIcon = document.getElementById("menu-icon");
+  const navLinks = document.getElementById("nav-links");
+
+  menuIcon.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+  });
+ </script>
+</body>
+</html>
