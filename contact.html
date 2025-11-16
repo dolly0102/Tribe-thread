@@ -5,8 +5,79 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Contact — TribeThreads</title>
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* ===== POPUP STYLES ===== */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .popup-box {
+      background: #fff;
+      padding: 25px;
+      width: 90%;
+      max-width: 350px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      animation: fadeIn 0.3s ease;
+    }
+
+    .popup-box h2 {
+      margin-bottom: 10px;
+      color: #28a745;
+    }
+
+    .popup-box p {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .popup-box button {
+      padding: 10px 20px;
+      border: none;
+      background: #28a745;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Error popup */
+    .popup-box.error h2 {
+      color: #dc3545;
+    }
+    .popup-box.error button {
+      background: #dc3545;
+    }
+  </style>
 </head>
+
 <body>
+
+  <!-- POPUP WINDOW -->
+  <div class="popup-overlay" id="popup">
+    <div class="popup-box" id="popupBox">
+      <h2 id="popupTitle">Message</h2>
+      <p id="popupText">Popup text here.</p>
+      <button onclick="closePopup()">OK</button>
+    </div>
+  </div>
+
   <header>
     <div class="container nav">
       <div class="brand">
@@ -18,79 +89,119 @@
       </div>
 
       <nav>
-  <div class="menu-icon" id="menu-icon">
-    ☰
-  </div>
-  <ul id="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="features.html">Collections</a></li>
-    <li><a href="contact.html" class="active">Contact</a></li>
-  </ul>
-</nav>
+        <div class="menu-icon" id="menu-icon">☰</div>
+        <ul id="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="features.html">Collections</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
   <main class="container contact-page">
 
-  <section class="contact-intro">
-    <h1>Get in Touch</h1>
-    <p>
-      At <strong>TribeThreads</strong>, we believe every outfit tells a story — and we’d love to hear yours.  
-      Whether you’re ordering custom wear, collaborating, or simply want to learn more about our designs,  
-      our team is here to listen, connect, and create something unforgettable with you.
-    </p>
-    <p>
-      Visit our workshop, send us a message, or connect with us on social media.  
-      Together, we’ll turn your ideas into African elegance, stitched with pride.
-    </p>
-  </section>
+    <section class="contact-intro">
+      <h1>Get in Touch</h1>
+      <p>
+        At <strong>TribeThreads</strong>, we believe every outfit tells a story — and we’d love to hear yours.
+      </p>
+    </section>
 
-  <section class="contact">
-    <h3>Send Us a Message</h3>
-    <form>
-      <input type="text" placeholder="Your Full Name" required>
-      <input type="email" placeholder="Your Email Address" required>
-      <input type="text" placeholder="Subject" required>
-      <textarea rows="5" placeholder="Your Message..." required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
+    <section class="contact">
+      <h3>Send Us a Message</h3>
 
-  <section class="contact-details">
-    <h3>Our Contact Information</h3>
-    <div class="details-grid">
-      <div class="detail-item">
-        <h4>📍 Address</h4>
-        <p>TribeThreads Fashion House,<br> Abeokuta, Ogun State, Nigeria.</p>
-      </div>
-      <div class="detail-item">
-        <h4>📞 Phone</h4>
-        <p>+234 812 345 6789</p>
-      </div>
-      <div class="detail-item">
-        <h4>✉️ Email</h4>
-        <p>hello@tribethreads.com</p>
-      </div>
-      <div class="detail-item">
-        <h4>🌍 Follow Us</h4>
-        <p>
-          <a href="#">Instagram</a> • 
-          <a href="#">Facebook</a> • 
-          <a href="#">Twitter</a>
-        </p>
-      </div>
-    </div>
-  </section>
+      <!-- CONTACT FORM -->
+      <form id="contactForm">
+        <input type="text" placeholder="Your Full Name" id="name" required>
+        <input type="email" placeholder="Your Email Address" id="email" required>
+        <input type="text" placeholder="Subject" id="subject" required>
+        <textarea rows="5" placeholder="Your Message..." id="message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
 
-</main>
-<script>
-   const menuIcon = document.getElementById("menu-icon");
-  const navLinks = document.getElementById("nav-links");
+     <section class="contact-details">
+      <h3>Our Contact Information</h3>
+      <div class="details-grid">
+        <div class="detail-item">
+          <h4>📍 Address</h4>
+          <p>TribeThreads Fashion House,<br> Abeokuta, Ogun State, Nigeria.</p>
+        </div>
+        <div class="detail-item">
+          <h4>📞 Phone</h4>
+          <p>+234 812 345 6789</p>
+        </div>
+        <div class="detail-item">
+          <h4>✉️ Email</h4>
+          <p>hello@tribethreads.com</p>
+        </div>
+        <div class="detail-item">
+          <h4>🌍 Follow Us</h4>
+          <p>
+            <a href="#">Instagram</a> • 
+            <a href="#">Facebook</a> • 
+            <a href="#">Twitter</a>
+          </p>
+        </div>
+      </div>
+    </section>
 
-  menuIcon.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
-  });
+  </main>
+
+  <script>
+    // MOBILE MENU
+    const menuIcon = document.getElementById("menu-icon");
+    const navLinks = document.getElementById("nav-links");
+    menuIcon.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+
+    // POPUP HANDLING
+    const popup = document.getElementById("popup");
+    const popupTitle = document.getElementById("popupTitle");
+    const popupText = document.getElementById("popupText");
+    const popupBox = document.getElementById("popupBox");
+
+    function showPopup(title, message, isError = false) {
+      popupTitle.textContent = title;
+      popupText.textContent = message;
+
+      if (isError) {
+        popupBox.classList.add("error");
+      } else {
+        popupBox.classList.remove("error");
+      }
+
+      popup.style.display = "flex";
+    }
+
+    function closePopup() {
+      popup.style.display = "none";
+    }
+
+    // FORM VALIDATION
+    const form = document.getElementById("contactForm");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const subject = document.getElementById("subject").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      if (!name || !email || !subject || !message) {
+        showPopup("Invalid Response", "Please fill out all fields.", true);
+        return;
+      }
+
+      showPopup("Success!", "Your story has been heard!");
+
+      form.reset();
+    });
   </script>
+
 </body>
 </html>
